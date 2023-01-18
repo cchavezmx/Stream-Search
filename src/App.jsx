@@ -1,8 +1,5 @@
 import { useEffect, useState } from 'react'
 import Swal from 'sweetalert2'
-// https://rapidapi.com/movie-of-the-night-movie-of-the-night-default/api/streaming-availability/
-// https://flowbite.com/tools/tailwind-cheat-sheet/
-
 import './App.css'
 
 export default function App () {
