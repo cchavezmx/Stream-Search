@@ -57,11 +57,11 @@ export default function App () {
         <div className='flex gap-1 justify-center columns-1'>
           <section className='flex-col'>
             <form id='form-list' onSubmit={handledForm} className='pt-4 w-[22rem] flex'>
-              <input
-                className='p-2 border-2 border-gray-300 rounded-md flex-auto text-center'
-                placeholder='¿Qué quieres ver?'
-                name='value'
-              />
+              <select>
+                <option value='hbo'>hbo</option>
+                <option value='netflix'>netflix</option>
+                <option value='prime'>prime</option>
+              </select>
             </form>
             <div className='m-0'>
               {
