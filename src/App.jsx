@@ -38,7 +38,7 @@ export default function App () {
     return fetch('https://streaming-availability.p.rapidapi.com/search/basic?country=mx&service=prime&type=movie&page=2&output_language=es&language=es', options)
       .then(response => response.json())
       .then(res => res)
-      .catch(err => console.error(err))
+      .catch(err => err)
   }
 
   const [movies, setMovies] = useState([])
@@ -81,7 +81,7 @@ export default function App () {
         <h2>Ultimas añadidos</h2>
         <section className='grid grid-cols-6 mt-[8rem] scrolling-auto'>
           {
-                movies.length > 0 && movies.map(item => {
+                movies?.length > 0 && movies.map(item => {
                   return (
                     <div key={item.imdbID} className='p-1 bg-fuchsia-200 rounded-md' onClick={() => handlerDescription(item.overview)}>
                       <picture>
@@ -91,6 +91,12 @@ export default function App () {
                     </div>
                   )
                 })
+              }
+          {
+                movies?.length === 0 && <p>No hay peliculas disponibles en tu ciudad</p>
+              }
+          {
+                typeof movies === 'undefined' && <p>Ya exediste el tiempo de uso de la api</p>
               }
         </section>
 
