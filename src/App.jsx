@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { useEffect, useState } from 'react'
 import Swal from 'sweetalert2'
 import './App.css'
@@ -5,7 +6,7 @@ import './App.css'
 // REQUIRED
 // Some possible values are netflix prime disney hbo hulu peacock paramount starz showtime apple mubi
 
-export default function App () {
+export default function App ({ listaMovies }) {
   const handledForm = (e) => {
     // e.preventDefault()
     // // eslint-disable-next-line no-undef
@@ -16,6 +17,16 @@ export default function App () {
     // setList((prev) => [...prev, value])
     // e.target.reset()
   }
+
+  // optimo
+  // lista de usuarios 8 mil
+  // const transformLista = useMemo(() => {
+  //   // guardar el estado iterno en cada renderizo
+  //   return (
+  //     <h1>Hola</h1>
+  //   )
+  // }, [listaMovies])
+  // console.log('🚀 ~ file: App.jsx:22 ~ transformLista ~ transformLista', transformLista)
 
   const handlerDescription = (desc) => {
     Swal.fire({
@@ -30,7 +41,7 @@ export default function App () {
     const options = {
       method: 'GET',
       headers: {
-        'X-RapidAPI-Key': '20833e1faemsh1ac4de30e1e813dp14d672jsnfcbb2e631bed',
+        'X-RapidAPI-Key': '76e65153bemshcb8044920cfe3d5p11aa28jsn9b544d30999e',
         'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
       }
     }
@@ -43,9 +54,18 @@ export default function App () {
 
   const [movies, setMovies] = useState([])
   useEffect(() => {
-    getMovies().then(res => {
-      setMovies(res.results)
-    })
+    const isMoviesStorage = localStorage.getItem('movies')
+    if (isMoviesStorage) {
+      const { res: resStorage } = JSON.parse(isMoviesStorage)
+      console.log('localStorage')
+      setMovies(resStorage.results)
+    } else {
+      getMovies().then(res => {
+        console.log('fetch')
+        localStorage.setItem('movies', JSON.stringify({ res }))
+        setMovies(res.results)
+      })
+    }
   }, [])
 
   console.log(movies)

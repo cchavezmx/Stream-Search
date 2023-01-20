@@ -8,6 +8,6 @@ El objetivo de está clase es poder profundizar en el uso de los Hooks de React,
 
 https://rapidapi.com/movie-of-the-night-movie-of-the-night-default/api/streaming-availability/
 
-## Guía de estilos de Tailwind
+## Guía de estilos de Tailwind CSS
 
 https://flowbite.com/tools/tailwind-cheat-sheet/

@@ -3,6 +3,7 @@ import { useState, useMemo } from 'react'
 // useCallback === useMemo => 'funciones'  menos usados => debounce
 
 // useRef => memoriza para el manejo del DOM
+//
 // Custom Hooks
 
 const ClassMemo = () => {
