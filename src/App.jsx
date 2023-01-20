@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react'
 import Swal from 'sweetalert2'
 import './App.css'
 
+// REQUIRED
+// Some possible values are netflix prime disney hbo hulu peacock paramount starz showtime apple mubi
+
 export default function App () {
   const handledForm = (e) => {
     // e.preventDefault()
@@ -32,7 +35,7 @@ export default function App () {
       }
     }
 
-    return fetch('https://streaming-availability.p.rapidapi.com/search/basic?country=mx&service=prime&type=series&page=1&output_language=es&language=es', options)
+    return fetch('https://streaming-availability.p.rapidapi.com/search/basic?country=mx&service=prime&type=movie&page=2&output_language=es&language=es', options)
       .then(response => response.json())
       .then(res => res)
       .catch(err => console.error(err))
@@ -50,7 +53,7 @@ export default function App () {
   return (
     <>
       <nav className='bg-blue-500 fixed top-0 w-full left-0 p-4'>
-        <h1 className='text-white text-center font-bold'>Stream Search</h1>
+        <h1 className='text-white text-center font-bold'>Buscador de Servicios</h1>
         <div className='flex gap-1 justify-center columns-1'>
           <section className='flex-col'>
             <form id='form-list' onSubmit={handledForm} className='pt-4 w-[22rem] flex'>
